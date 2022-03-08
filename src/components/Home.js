@@ -1,42 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectResults } from '../redux/home/home';
-import { today } from '../utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchApiByDate, selectResults } from '../redux/home/home';
+import { BASE_URL, today } from '../utils';
 
 const Home = () => {
-  const countries = useSelector(selectResults);
   const [date, setDate] = useState('');
-  const [maxDate, setMaxDate] = useState('hello');
+  const [maxDate, setMaxDate] = useState('');
+  const [selectToday, setselectToday] = useState('');
+  const countries = useSelector(selectResults);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    setMaxDate(today().slice(1));
+    setselectToday(today());
   }, []);
+
+  useEffect(() => {
+    if (selectToday !== '') {
+      dispatch(fetchApiByDate(`${BASE_URL}${selectToday}`));
+    }
+    setMaxDate(selectToday);
+  }, [selectToday]);
+
+  useEffect(() => {
+    if (date !== '') {
+      dispatch(fetchApiByDate(`${BASE_URL}${date}`));
+    }
+  }, [date]);
 
   return (
     <div>
-      <h1>Hello from App!</h1>
-      {maxDate !== 'hello' && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log('marcado:', date);
-          }}
-        >
-          <label htmlFor="start">
-            Date:
-            <input
-              id="start"
-              type="date"
-              value={date}
-              min="2020-01-01"
-              max={maxDate}
-              onChange={({ target }) => setDate(target.value)}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+      {maxDate !== '' && (
+        <label htmlFor="start">
+          Date:
+          <input
+            id="start"
+            type="date"
+            value={date}
+            min="2020-01-01"
+            max={maxDate}
+            onChange={({ target }) => setDate(target.value)}
+          />
+        </label>
       )}
-
       <div
         style={{
           display: 'flex',
