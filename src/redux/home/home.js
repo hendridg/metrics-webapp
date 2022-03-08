@@ -5,14 +5,6 @@ const initialState = {
   results: [],
 };
 
-export const fetchApiByCountries = createAsyncThunk(
-  'home/fetchApiByCountries',
-  async (url) => {
-    const response = await fetch(url).then((res) => res.json());
-    return response;
-  },
-);
-
 export const fetchApiByDate = createAsyncThunk(
   'home/fetchApiByDate',
   async (url) => {
@@ -27,22 +19,6 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchApiByCountries.pending, (state) => ({
-        ...state,
-        statusHome: 'loading',
-      }))
-      .addCase(fetchApiByCountries.fulfilled, (state, action) => {
-        const arrayHome = action.payload.countries.map((country) => ({
-          id: country.id,
-          name: country.name,
-          link: country.links[0].href,
-        }));
-        return {
-          ...state,
-          statusHome: 'done',
-          results: arrayHome,
-        };
-      })
       .addCase(fetchApiByDate.pending, (state) => ({
         ...state,
         statusHome: 'loading',
@@ -56,12 +32,15 @@ const homeSlice = createSlice({
             id: countries[country].id,
             name: countries[country].name,
             link: countries[country].links[0].href,
-            todayCases: countries[country].today_new_confirmed,
-            day,
+            day: day[0],
+            confirmed: countries[country].today_new_confirmed,
+            openCases: countries[country].today_new_open_cases,
+            recovered: countries[country].today_new_recovered,
+            deaths: countries[country].today_new_deaths,
           };
           return obj;
         });
-        countriesArray.sort((a, b) => b.todayCases - a.todayCases);
+        countriesArray.sort((a, b) => b.confirmed - a.confirmed);
         return {
           ...state,
           statusHome: 'done',
