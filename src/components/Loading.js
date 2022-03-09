@@ -14,7 +14,6 @@ const Spinner = styled.div`
   animation: rotateIn infinite 1s linear;
   @keyframes rotateIn {
     0% {
-      /* -webkit-transform: rotate(0deg); */
       transform: rotate(0deg);
     }
     100% {

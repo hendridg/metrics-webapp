@@ -13,7 +13,8 @@ const ImgContainer = styled.div`
     font-size: 1.2rem;
   }
   @media (min-width: 600px) {
-    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
   }
 `;
 
