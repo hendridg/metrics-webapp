@@ -9,6 +9,12 @@ const ImgContainer = styled.div`
   justify-content: center;
   text-align: center;
   margin-top: 10rem;
+  @media (min-width: 600px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 function NoDataAvaible() {
@@ -27,8 +33,8 @@ function NoDataAvaible() {
             <img
               src="/hands-bubbles-solid.svg"
               style={{
-                width: '8rem',
-                height: '8rem',
+                width: '8em',
+                height: '8em',
               }}
               alt="hands wash"
             />
@@ -40,12 +46,12 @@ function NoDataAvaible() {
             <img
               src="/syringe-svgrepo-com.svg"
               style={{
-                width: '8rem',
-                height: '8rem',
+                width: '8em',
+                height: '8em',
               }}
               alt="hands wash"
             />
-            <h3>Vaccune</h3>
+            <h3>Vaccine</h3>
           </ImgContainer>
         </Slide>
         <Slide index={2}>
@@ -53,8 +59,8 @@ function NoDataAvaible() {
             <img
               src="/avatar-face-mask.svg"
               style={{
-                width: '8rem',
-                height: '8rem',
+                width: '8em',
+                height: '8em',
               }}
               alt="hands wash"
             />
