@@ -10,6 +10,7 @@ import {
 import Header from '../components/Header';
 import CardContainer from '../components/CardContainer';
 import Card from '../components/Card';
+import Loading from '../components/Loading';
 
 const LinkTo = styled(Link)`
   text-decoration: none;
@@ -22,7 +23,7 @@ const Home = () => {
   const totalWorld = useSelector(selectTotalWorld);
   const status = useSelector(selectStatusHome);
 
-  if (status === 'loading' || status === 'idle') return <p>Loading...</p>;
+  if (status === 'loading' || status === 'idle') return <Loading />;
 
   return (
     <div>

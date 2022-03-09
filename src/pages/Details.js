@@ -13,6 +13,8 @@ import { BASE_URL } from '../utils';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import CardContainer from '../components/CardContainer';
+import Loading from '../components/Loading';
+import NoDataAvaible from '../components/NoDataAvaible';
 
 function Details() {
   const { id, date } = useParams();
@@ -27,17 +29,21 @@ function Details() {
   }, []);
 
   if (status === 'loading' || status === 'idle') {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (
     <div>
       <Header data={totalCountry} />
-      <CardContainer>
-        {resultRegionsDetails.map((region) => (
-          <Card key={region.id} data={region} />
-        ))}
-      </CardContainer>
+      {resultRegionsDetails.length > 0 ? (
+        <CardContainer>
+          {resultRegionsDetails.map((region) => (
+            <Card key={region.id} data={region} />
+          ))}
+        </CardContainer>
+      ) : (
+        <NoDataAvaible />
+      )}
     </div>
   );
 }
