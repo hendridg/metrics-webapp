@@ -5,19 +5,19 @@ import {
   selectResultsDetails,
   selectNameCountry,
   selectCountryTotalDeaths,
+  selectStatusDetails,
   fetchApiDetails,
 } from '../redux/details/details';
 import { BASE_URL } from '../utils';
 
 function Details() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
   const navitage = useNavigate();
   const { id, date } = useParams();
   const dispatch = useDispatch();
   const resultRegions = useSelector(selectResultsDetails);
   const nameCountry = useSelector(selectNameCountry);
   const totalDeaths = useSelector(selectCountryTotalDeaths);
+  const status = useSelector(selectStatusDetails);
 
   useEffect(() => {
     dispatch(fetchApiDetails(`${BASE_URL}/${date}/country/${id}`));
@@ -28,8 +28,12 @@ function Details() {
       <button type="button" onClick={() => navitage('/')}>
         back
       </button>
-      <h3>{nameCountry}</h3>
-      <h4>{totalDeaths}</h4>
+      {status === 'done' && (
+        <div>
+          <h3>{nameCountry}</h3>
+          <h4>{totalDeaths}</h4>
+        </div>
+      )}
       <div
         style={{
           display: 'flex',
@@ -38,7 +42,7 @@ function Details() {
           gap: '0.5rem',
         }}
       >
-        {resultRegions ? (
+        {status === 'done' ? (
           resultRegions.map((region) => (
             <div
               key={region.name}
