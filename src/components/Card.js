@@ -9,7 +9,7 @@ const CardDetails = styled.div`
     rgba(0, 0, 0, 0.6)
   );
   background-color: #4369b2;
-  width: 10rem;
+  width: 8rem;
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
 `;
