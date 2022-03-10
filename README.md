@@ -99,9 +99,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Used https://covid19tracking.narrativa.com/ API.
+- https://fontawesome.com/icons/ and https://www.svgrepo.com/vectors to free cool icons 😎.
+- https://simplemaps.com/ for background world map 🌏.
+- 💅 Design by my own inspiration 🤗, the markup made it in https://excalidraw.com/
 
 ## 📝 License
 
