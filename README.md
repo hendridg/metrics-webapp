@@ -4,9 +4,19 @@ Metrics WebApp
 
 > "Metrics WebApp" This project will lay foundations for your understand new features for Redux, using slice reducer and API requires with createAsyncThunk
 
-![screenshot](./metrics_app.png)
+## Live Demo
 
-## Built With
+[Live Demo Link Netlify](https://mystifying-varahamihira-cda443.netlify.app/)
+
+> Desktop Design
+
+![screenshot](./screenshot-01.png)
+
+> Mobile Design
+
+![screenshot](./screenshot-02.png)
+
+> Built With
 
 - React
 - Redux
