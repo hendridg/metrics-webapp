@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import {
   selectResults,
   selectTotalWorld,
@@ -30,7 +31,7 @@ const Home = () => {
       <Header data={totalWorld} />
       <CardContainer>
         {countries.map((country) => (
-          <LinkTo to={`${country.id}/${country.day}`} key={country.id}>
+          <LinkTo to={`${country.id}/${country.day}`} key={uuidv4()}>
             <Card data={country} style={{ margin: '0' }} />
           </LinkTo>
         ))}
