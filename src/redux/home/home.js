@@ -48,7 +48,6 @@ const homeSlice = createSlice({
           const obj = {
             id: countries[country].id,
             name: countries[country].name,
-            link: countries[country].links[0].href,
             day: day[0],
             confirmed: countries[country].today_new_confirmed,
             openCases: countries[country].today_new_open_cases,
