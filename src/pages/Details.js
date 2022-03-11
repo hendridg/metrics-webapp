@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import {
   selectResultsRegionsDetails,
   selectTotalCountry,
@@ -37,7 +38,7 @@ function Details() {
       {resultRegionsDetails.length > 0 ? (
         <CardContainer>
           {resultRegionsDetails.map((region) => (
-            <Card key={region.id} data={region} />
+            <Card key={uuidv4()} data={region} />
           ))}
         </CardContainer>
       ) : (
